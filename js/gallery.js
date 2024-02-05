@@ -96,13 +96,14 @@ const images = [
       if (event.target.classList.contains('gallery-image')) {
           event.preventDefault();
       
-          const dataSource = event.target.getAttribute('data-source');
-          const description = event.target.getAttribute('alt');
+        // const dataSource = event.target.getAttribute('data-source');
+        // console.log(dataSource);
+         // const description = event.target.getAttribute('alt');
           modalWindow = basicLightbox.create(`<div class="modalWindow">
                                                   <img
-                                                    src="${dataSource}" 
-                                                    alt="${description}" 
-                                                    width="1112" 
+                                                    src="${event.target.getAttribute('data-source')}" 
+                                                    alt="${event.target.getAttribute('alt')}" 
+                                                    width="840" 
                                                     height="640"
                                                   >
                                               </div>`);
@@ -113,7 +114,13 @@ const images = [
 
   document.addEventListener("keydown", (event) => {
     
-      if (event.code === "Escape") {
-          modalWindow.close();
+    if (event.code === "Escape" && modalWindow.visible()) {
+      modalWindow.close()
+          
       }
   });
+
+
+
+
+  
